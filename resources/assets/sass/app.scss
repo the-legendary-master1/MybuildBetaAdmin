@@ -1,14 +1,27 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
 @import "variables";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// Font Awesome
+@import "node_modules/font-awesome/scss/font-awesome";
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+// Layouts
+@import 'layout/_variables.scss';
+@import 'layout/_mixins.scss';
+@import 'layout/_reset.scss';
+@import 'layout/_left-panel.scss';
+@import 'layout/_content-tree.scss';
+@import 'layout/_base.scss';
+@import 'layout/_header.scss';
+@import 'layout/_nav.scss';
+@import 'layout/_footer.scss';
+@import 'layout/_buttons.scss';
+@import 'layout/_forms.scss';
+@import 'layout/_components.scss';
+@import 'layout/_modals.scss';
+
+// Overide
+@import "overide";
+

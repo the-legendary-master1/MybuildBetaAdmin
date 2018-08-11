@@ -1,0 +1,21 @@
+@mixin transition($trans) {
+	-webkit-transition: $trans;
+	-moz-transition: $trans;
+	-ms-transition: $trans;
+	-o-transition: $trans;
+	transition: $trans;
+}
+@mixin flex($flex) {
+	-webkit-flex: $flex;
+	-ms-flex: $flex;
+	flex: $flex;
+}
+@mixin radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+@mixin display($flex) {
+	display: -ms-flex;
+	display: flex;
+}

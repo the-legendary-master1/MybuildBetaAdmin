@@ -1,0 +1,243 @@
+body {
+	font-family: 'Arial', sans-serif;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	line-height: 20px;
+	font-size: 14px;
+}
+.collapsed {
+	display: none;
+}
+.ui-resizable-handle {
+	position: absolute;
+}
+.ui-resizable-handle.ui-resizable-e {
+	cursor: e-resize;
+	height: 100%;
+	right: -5px;
+	width: 4px;
+	top: 0;
+}
+.left-menus:hover {
+	.ui-resizable-handle.ui-resizable-e {
+		border-right: thin solid #ccc;
+		border-left: thin solid #ccc;
+		background-color: #f8f8f8;
+	}
+}
+.overflow {
+	overflow: auto;
+	overflow-x: hidden;
+}
+.icon-black { color: #000; }
+.icon-green { color: #00c42a; }
+.icon-yellow { color: #f5b603; }
+.icon-orange { color: #f57303; }
+.icon-blue { color: #1d96ff; }
+.icon-red { color: #f00; }
+.panel-header {
+    height: 75px;
+    padding: 15px 20px;
+    white-space: nowrap;
+    background: #f8f8f8;
+    border-bottom: 1px solid #d9d9d9;
+}
+.btn {
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    font-size: 13px;
+    text-align: center;
+    font-size: 13px;
+    vertical-align: middle;
+    white-space: nowrap;
+    display: inline-block;
+    cursor: pointer;
+    @include radius(4px);
+}
+.btn-default {
+	color: #333;
+	background-color: #efefef;
+	border-color: #ccc;
+}
+.btn-default:focus {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #8c8c8c;
+}
+.btn-default:hover {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+.btn-success {
+	color: #fff;
+	background-color: #449d44;
+	border-color: #398439;
+}
+.btn-success:focus {
+	color: #fff;
+	background-color: #449d44;
+	border-color: #255625;
+}
+.btn-success:hover {
+	background-color: #3c8f3c;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-danger:focus {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #761c19;
+}
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.btn-group {
+	display: inline-block;
+}
+.main-content {
+	position: absolute;
+	left: 440px;
+	right: 0;
+	top: 0;
+	bottom: 0;
+
+	.header-title {
+		padding-bottom: 0;
+		height: 90px;
+		position: relative;
+
+		.panel-page-title {
+			margin-top: 20px;
+
+			.input-group {
+				@include display(flex);
+			}
+			.input-group:first-child {
+				width: 80%;
+				float: left;
+				margin-right: 10%;
+			}
+			.input-group:last-child {
+				width: 10%;
+
+				select {
+					height: 28px;
+					padding: 5px 10px;
+				}
+			}
+		}
+
+		ul {
+			position: absolute;
+			background-color: #f8f8f8;
+			bottom: -1px;
+
+			li {
+				float: left;
+				display: inline-block;
+				background-color: #f8f8f8;
+
+				a.active {
+					color: #000;
+					cursor: default;
+					background-color: #fff;
+					border: thin solid #d9d9d9;
+					border-bottom-color: transparent;
+				}
+				a:hover, a:focus {
+					color: #000;
+				}
+				a {
+					color: #555;
+					display: block;
+					padding: 5px 10px;
+					border: thin solid transparent;
+					border-bottom-color: #d9d9d9;
+					font-size: 13px;
+				}
+			}
+		}
+	}
+	.myb-panel {
+		margin: 30px 20px;
+
+		.tab-content {
+			.tab-panel {
+				display: none;
+
+				.input-txt-group {
+					@include display(flex);
+					padding-bottom: 20px;
+					margin-bottom: 15px;
+					border-bottom: thin solid #f8f8f8;
+
+					.input-group {
+						@include display(flex);
+					}
+					.txt-titles-wrapper {
+						float: left;
+						width: 180px;
+						max-width: 100%;
+						height: auto;
+						min-height: 28px;
+					}
+					.txt-field-wrapper {
+						width: 500px;
+						max-width: 100%;
+
+						.select-image {
+							border: 2px dashed #eee;
+							width: 120px;
+							height: 120px;
+							text-align: center;
+							line-height: 120px;
+							font-size: 24px;
+							color: #eee;
+							cursor: pointer;
+							transition: all 150ms ease-in-out;
+						}
+						.select-image:hover {
+							border-color: #128ee7;
+							color: #128ee7;
+						}
+					}
+				}
+			}
+			.active {
+				display: block;
+			}
+		}
+	}
+	.panel-footer {
+		background-color: #f8f8f8;
+		border-top: #d9d9d9;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 10px 20px;
+
+		.myb-buttons.myb-breadcrumbs {
+			@include display(flex);
+			align-items: center;
+
+			.breadcrumbs {
+				font-size: 12px;
+				padding-right: 10px;
+				margin-right: auto;
+			}
+			.panel-footer-buttons {
+				padding-left: 10px;
+				margin-left: auto;
+			}
+		}
+	}
+}

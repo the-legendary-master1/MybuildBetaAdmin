@@ -1,22 +1,44 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import VueRouter from 'vue-router';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.use(VueRouter);
 
-const app = new Vue({
-    el: '#app'
+/*INCLUDES*/
+let Sidebar = require('./components/_includes/Sidebar.vue');
+let Contentheader = require('./components/_includes/Contentheader.vue');
+
+/*PAGES*/
+let Content = require('./components/_pages/Content.vue');
+
+/*ROUTES*/
+const routes = [
+	/*PAGES ROUTES*/
+	{ path: '/', name: 'Content', component: Content },
+];
+const router = new VueRouter({
+  	routes
+})
+
+/*GLOBAL CALL*/
+window.Event = new Vue;
+window.token = localStorage.getItem('token');
+window.userType = localStorage.getItem('userType');
+window.baseApiUrl = "http://lumen.test";
+
+var app = new Vue({
+    el: '#app',
+    components: {
+    	Sidebar,
+    	Contentheader,
+    },
+    router
 });
+
+/*ADDONS*/
+require('./addons/jquery-ui.min.js');
+require('./addons/main.js');
+require('./addons/show.js');

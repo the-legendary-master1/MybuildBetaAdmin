@@ -1,0 +1,41 @@
+.myb-options-modal {
+    box-shadow: 3px 0 7px #dbdbdb;
+    background-color: #ffffff;
+    position: absolute;
+    left: 441px;
+    width: 250px;
+    height: 100%;
+    display: none;
+
+    .options-title {
+    	span {
+    		margin-top: 25px;
+    		display: block;
+    	}
+    }
+    .options-action {
+    	border-bottom: 1px solid #efefef;
+
+    	ul {
+    		li {
+    			width: 100%;
+    			display: block;
+
+    			a {
+    				display: block;
+    				padding: 12px 20px;
+
+    				span {
+    					margin-left: 10px;
+    				}
+    			}
+    			a:hover {
+    				background-color: #f8f8f8;
+    			}
+    		}
+    	}
+    }
+}
+.myb-options-modal._active {
+    display: block;
+}
