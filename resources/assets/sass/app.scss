@@ -7,6 +7,12 @@
 // Font Awesome
 @import "node_modules/font-awesome/scss/font-awesome";
 
+// Bulma
+@import "node_modules/bulma/bulma";
+
+// Bulma Vue Modules
+@import "node_modules/buefy/src/scss/buefy";
+
 // Layouts
 @import 'layout/_variables.scss';
 @import 'layout/_mixins.scss';

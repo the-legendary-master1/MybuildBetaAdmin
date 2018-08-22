@@ -11,7 +11,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.content-wrapper > ins').click(function() {
+	$('body').on('click', '.content-wrapper > ins', function(){
 
 		$(this).children().toggleClass('fa-caret-right fa-caret-down');
 

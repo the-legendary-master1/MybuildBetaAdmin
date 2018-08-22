@@ -19,6 +19,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "buefy": "^0.6.6",
+        "bulma": "^0.7.1",
         "font-awesome": "^4.7.0",
         "vue-router": "^3.0.1"
     }
