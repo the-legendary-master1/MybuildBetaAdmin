@@ -36,9 +36,13 @@
                                 <div class="content-wrapper">
                                     <ins class="single" v-if="sidebar.type == 1"></ins>
                                     <ins class="navigation fa fa-caret-right toggleCaret" @click="thisChild(sidebar.name)" v-if="sidebar.type == 2">&nbsp;</ins>
-                                    <router-link :to="sidebar.url" class="tree-icon"><i class="fa" :class="sidebar.icon" aria-hidden="true"></i></router-link>
+                                    <a class="tree-icon" @click="getThisData">
+                                        <router-link :to="sidebar.url"><i class="fa" :class="sidebar.icon" aria-hidden="true"></i></router-link>
+                                    </a>
 
-                                    <router-link :to="sidebar.url" class="content-title">{{sidebar.name}}</router-link>
+                                    <a class="content-title" @click="getThisData">
+                                        <router-link :to="sidebar.url">{{sidebar.name}}</router-link>
+                                    </a>
                                     <div class="myb-options">
                                         <a class="ellipsis"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                     </div>
@@ -51,22 +55,30 @@
 
                                         <div class="content-wrapper">
                                             <ins class="single" v-if="secondDrop.type == 1"></ins>
-                                            <ins class="navigation fa fa-caret-right toggleCaret" @click="thisSubChild(secondDrop.name)" v-if="secondDrop.type == 2">&nbsp;</ins>
-                                            <a href="" class="tree-icon"><i class="fa" :class="secondDrop.icon" aria-hidden="true"></i></a>
+                                            <ins class="navigation fa fa-caret-right toggleCaret" @click="thisChild(secondDrop.name)" v-if="secondDrop.type == 2">&nbsp;</ins>
+                                            <a class="tree-icon" @click="getThisData">
+                                                <router-link :to="secondDrop.url"><i class="fa" :class="secondDrop.icon" aria-hidden="true"></i></router-link>
+                                            </a>
 
-                                            <a href="" class="content-title">{{secondDrop.name}}</a>
+                                            <a class="content-title" @click="getThisData">
+                                                <router-link :to="secondDrop.url">{{secondDrop.name}}</router-link>
+                                            </a>
                                             <div class="myb-options">
                                                 <a class="ellipsis"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
 
                                         <ul class="collapsed" v-if="secondDrop.type == 2">
-                                           <li class="open-option-modal">
+                                           <li class="open-option-modal" v-for="thirdDrop in secondDrop.this_data">
                                                <div class="content-wrapper">
                                                    <ins class="single"></ins>
-                                                   <a href="" class="tree-icon"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                                    <a class="tree-icon" @click="getThisData">
+                                                        <router-link :to="thirdDrop.url"><i class="fa" :class="thirdDrop.icon" aria-hidden="true"></i></router-link>
+                                                    </a>
 
-                                                   <a href="" class="content-title">Daniel's brand new investment home</a>
+                                                    <a class="content-title" @click="getThisData">
+                                                        <router-link :to="thirdDrop.url">{{thirdDrop.name}}</router-link>
+                                                    </a>
                                                    <div class="myb-options">
                                                        <a class="ellipsis"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                                                    </div>
@@ -119,7 +131,9 @@
 
                         this.sidebarData = parentData;
                   })
-                  .catch((errors) => console.log(errors))
+                  .catch((errors) => {
+                    this.getSidebar(this.subSidebarTitle);
+                  })
             },
             thisChild(parent_name){
                 let thischildData = [];
@@ -136,7 +150,8 @@
                      }
                 });
             },
-            thisSubChild(parent_name) {
+            getThisData() {
+                Event.$emit('headerTriger');
             }
         }
     }

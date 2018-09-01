@@ -79,7 +79,7 @@
             },
             thisActive() {
                     this.$data.mainSidebarData.map((data) => {
-                        if(data.name == this.$route.name) {
+                        if(data.name == this.$route.meta.parent_name) {
                             data.show = 'active';
                             Event.$emit('clickMainSdiebar', data.name);
                         }else{

@@ -18747,6 +18747,11 @@ input {
   padding: 10px 0;
 }
 
+.more-wrapper .more-content:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 .more-wrapper .more-content::after {
   content: "";
   display: block;

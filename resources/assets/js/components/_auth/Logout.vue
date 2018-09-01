@@ -25,7 +25,9 @@
 
 					Event.$emit('logout');
 				  })
-				  .catch((errors) => console.log(errors))
+				  .catch((errors) => {
+				  	this.loggedOut();
+				  })
 			}
 		}
 	}

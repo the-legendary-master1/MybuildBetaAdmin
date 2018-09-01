@@ -41,7 +41,7 @@
             
             <ul class="nav nav-tabs">
                 <li v-for="head in tabData">
-                    <a data-toggle="tab" :href="head.tab_no">{{head.name}}</a>
+                    <a data-toggle="tab" :class="head.class" :href="head.tab_no" @click="parentDetect(head.class)">{{head.name}}</a>
                 </li>
             </ul>
         </div>
@@ -49,82 +49,58 @@
 </template>
 
 <script>
+    let HeaderData = require('../_mixins/HeaderData.js');
+
     export default {
         data() {
             return {
                 contentSidebar: true,
                 tabData: '',
-                allTabsData: [
-                  {
-                    parent_name: 'Home',
-                    tabs: [
-                      {
-                        name: 'Content',
-                        tab_no: '#tab1',
-                      },
-                      {
-                        name: 'Logos',
-                        tab_no: '#tab2',
-                      },
-                      {
-                        name: 'SEO',
-                        tab_no: '#tab3',
-                      },
-                      {
-                        name: 'Subscribe',
-                        tab_no: '#tab4',
-                      },
-                      {
-                        name: 'Header & Footer',
-                        tab_no: '#tab5',
-                      },
-                      {
-                        name: 'Custom Design Form',
-                        tab_no: '#tab6',
-                      },
-                      {
-                        name: 'Slider',
-                        tab_no: '#tab7',
-                      },
-                      {
-                        name: 'Info',
-                        tab_no: '#tab8',
-                      },
-                    ],
-                  },
-                ],
+                allTabsData: HeaderData,
             }
         },
         mounted() {
-          var thisTabData = [];
+          this.eachAllTabData();
 
-          $.each(this.allTabsData, (index, val) => {
-              if(val.parent_name == this.$route.meta.name) {
-                  thisTabData.push(val.tabs);
-              }
+          if(!token){
+              this.$data.contentSidebar = false;
+              $('.main-content').css('left', '0');
+          }
+
+          Event.$on('login', () => {
+              this.$data.contentSidebar = true;
+              $('.main-content').css('left', '440px');
           });
-
-          this.tabData = thisTabData[0];
-
-            if(!token){
-                this.$data.contentSidebar = false;
-                $('.main-content').css('left', '0');
-            }
-
-            Event.$on('login', () => {
-                this.$data.contentSidebar = true;
-                $('.main-content').css('left', '440px');
-            });
-            Event.$on('logout', () => {
-                this.$data.contentSidebar = false;
-                $('.main-content').css('left', '0');
-            });
+          Event.$on('logout', () => {
+              this.$data.contentSidebar = false;
+              $('.main-content').css('left', '0');
+          });
+          Event.$on('headerTriger', () => {
+            this.eachAllTabData();
+          });
         },
         methods: {
           actionDrop() {
             $('.action_wrapper').toggleClass('is-active');
             $('.action_caret').toggleClass('fa-angle-up fa-angle-down');
           },
+          eachAllTabData() {
+            var thisTabData = [];
+
+            $.each(this.allTabsData, (index, val) => {
+                if(val.parent_name == this.$route.meta.name) {
+                    thisTabData.push(val.tabs);
+                }
+            });
+
+          this.tabData = thisTabData[0];
+          $('.parent').click();
+          },
+          parentDetect(parent) {
+            if(parent == "") {
+              $('.maintab').hide();
+            } 
+          }
         }
     }
 </script>

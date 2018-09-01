@@ -20,13 +20,7 @@
         
         <Sidebar></Sidebar>
 
-        <section class="main-content">
-
-            <Contentheader></Contentheader>
-    
-            <router-view></router-view>
-
-        </section>
+        <Maincontent></Maincontent>
 
     </div>
 
@@ -34,6 +28,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
     <script>
+      $(function() {
         tinymce.init({
           selector: '.my-text-editor',
           branding: false,
@@ -45,11 +40,12 @@
             'insertdatetime media table contextmenu paste code help wordcount',
             'code'
           ],
-          toolbar: 'code | insert | formatselect | underline bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+          toolbar: 'code | insert | formatselect | bold | italic | alignleft | aligncenter | alignright | alignjustify | bullist | numlist | outdent | indent | help',
           content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css']
          });
+      });
     </script>
 
 </body>
